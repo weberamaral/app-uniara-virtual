@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UniaraVirtual.Code.Model.Aluno">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAQQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Model\Aluno.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniaraVirtual.Code.Model.Aula">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAIAEAAAQAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Code\Model\Aula.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniaraVirtual.Code.Model.Disciplina">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAQgAQAAAEAAIAACAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Code\Model\Disciplina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniaraVirtual.Code.Model.Falta">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAhAAAAAAAAAAAABAAEAAAA=</HashCode>
+      <FileName>Code\Model\Falta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniaraVirtual.Code.Model.Nota">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAEAAACAAACAAAAAAABAAAAAAAAAAEAAAQ=</HashCode>
+      <FileName>Code\Model\Nota.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniaraVirtual.Code.Model.Perfil">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Code\Model\Perfil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

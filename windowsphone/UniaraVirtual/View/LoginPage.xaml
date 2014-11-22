@@ -1,0 +1,83 @@
+﻿<phone:PhoneApplicationPage
+	x:Class="UniaraVirtual.View.LoginPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	toolkit:TiltEffect.IsTiltEnabled="True"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	SupportedOrientations="Portrait" Orientation="Portrait"
+	mc:Ignorable="d"
+	shell:SystemTray.BackgroundColor="#FF222222"
+	shell:SystemTray.ForegroundColor="#FFFEFEFE"
+	shell:SystemTray.IsVisible="True" Foreground="#FFFEFEFE" Background="#FF111111">
+
+    <!-- SYSTEMTRAY -->
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator Text="Uniara Virtual" IsVisible="True"/>
+    </shell:SystemTray.ProgressIndicator>
+
+    <!-- TRANSITIONS -->
+	<toolkit:TransitionService.NavigationInTransition>
+		<toolkit:NavigationInTransition>
+			<toolkit:NavigationInTransition.Backward>
+				<toolkit:TurnstileTransition Mode="BackwardIn"/>
+			</toolkit:NavigationInTransition.Backward>
+			<toolkit:NavigationInTransition.Forward>
+				<toolkit:TurnstileTransition Mode="ForwardIn"/>
+			</toolkit:NavigationInTransition.Forward>
+		</toolkit:NavigationInTransition>
+	</toolkit:TransitionService.NavigationInTransition>
+	<toolkit:TransitionService.NavigationOutTransition>
+		<toolkit:NavigationOutTransition>
+			<toolkit:NavigationOutTransition.Backward>
+				<toolkit:TurnstileTransition Mode="BackwardOut"/>
+			</toolkit:NavigationOutTransition.Backward>
+			<toolkit:NavigationOutTransition.Forward>
+				<toolkit:TurnstileTransition Mode="ForwardOut"/>
+			</toolkit:NavigationOutTransition.Forward>
+		</toolkit:NavigationOutTransition>
+	</toolkit:TransitionService.NavigationOutTransition>
+
+	<Grid x:Name="LayoutRoot" Background="#FF111111">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- LOADING -->
+		<ProgressBar x:Name="loading" Foreground="#FFFAA61A" Visibility="Collapsed"/>
+
+		<!-- PAGE TITLE -->
+		<StackPanel Grid.Row="1" Margin="12,17,0,28">
+			<TextBlock x:Name="lblTitulo" Text="LOGIN" Style="{StaticResource PhoneTextNormalStyle}" FontSize="{StaticResource PhoneFontSizeMedium}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Foreground="#FFFEFEFE"/>
+		</StackPanel>
+
+		<!-- MAIN CONTENT -->
+		<Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<TextBlock x:Name="lblInfo" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Text="Este aplicativo utiliza as informações acadêmicas do site Uniara Virtual, nunhuma nota, falta ou horário de aula é gerado por ele" Foreground="#FFFEFEFE" Margin="12,0,12,20" Grid.ColumnSpan="2"/>
+			<TextBlock x:Name="lblMatricula" TextWrapping="Wrap" Text="matricula" Grid.Row="1" Margin="24,0,0,0" VerticalAlignment="Center" FontSize="{StaticResource PhoneFontSizeMedium}" Foreground="White"/>
+			<TextBox x:Name="txtMatricula" TextWrapping="Wrap" InputScope="Number" Background="#BFFFFFFF" BorderBrush="#BFFFFFFF" Foreground="#FF333333" Style="{StaticResource txtDefault}" Grid.Row="1" Grid.ColumnSpan="2" CaretBrush="#FFEEEEEE" GotFocus="OnFocusInMatricula" LostFocus="onFocusOutMatricula"/>
+			<TextBlock x:Name="lblSenha" TextWrapping="Wrap" Text="senha" VerticalAlignment="Center" Foreground="White" Grid.Row="2" Grid.ColumnSpan="2" Margin="24,0,0,0" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+			<PasswordBox x:Name="txtSenha" Background="#BFFFFFFF" BorderBrush="#BFFFFFFF" d:LayoutOverrides="Height" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource passDefault}" Foreground="#FF333333" CaretBrush="#FFEEEEEE" GotFocus="OnFocusInSenha" LostFocus="OnFocusOutSenha" KeyDown="txtSenha_KeyDown"/>
+			<Button Click="button_Click" x:Name="btnLogin" Content="LOGAR" d:LayoutOverrides="Height" Grid.Row="3" VerticalAlignment="Top" BorderBrush="#FFFAA61A" Foreground="White" Style="{StaticResource btnDefault}" Background="#FFFAA61A" Margin="0,12,0,0"/>
+
+		</Grid>
+	</Grid>
+
+</phone:PhoneApplicationPage>

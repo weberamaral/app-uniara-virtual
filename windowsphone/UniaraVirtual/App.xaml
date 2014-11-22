@@ -1,0 +1,38 @@
+﻿<Application
+    x:Class="UniaraVirtual.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:converters="clr-namespace:UniaraVirtual.Assets.Converters"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+
+    <!--Application Resources-->
+    <Application.Resources>
+    	<ResourceDictionary>
+    		<ResourceDictionary.MergedDictionaries>
+    			<ResourceDictionary Source="Styles/Styles.xaml"/>
+    		</ResourceDictionary.MergedDictionaries>
+            <!--Convertes-->
+            <converters:TextCaseConverter x:Key="TextCaseConverter" />
+            <converters:VisibilityConverter x:Key="VisibilityConverter"/>
+            <converters:InverseBoolenaConverter x:Key="InverseBooleanConverter"/>
+            <converters:BorderColorConverter x:Key="BorderColorConverter"/>
+            <converters:NotaVisibilityConverter x:Key="NotaVisibilityConverter"/>
+    		<local:LocalizedStrings xmlns:local="clr-namespace:UniaraVirtual" x:Key="LocalizedStrings"/>
+            <!-- Colors-->
+            <SolidColorBrush x:Key="CustomBrushRed" Color="#FFFF2F2F" />
+            <SolidColorBrush x:Key="CustomBrushGreen" Color="#FF82B932" />
+            <SolidColorBrush x:Key="CustomBrushYellow" Color="#FFD9E216" />
+            <SolidColorBrush x:Key="CustomBrushGray" Color="#FF999999" />
+            <SolidColorBrush x:Key="Background" Color="#FF111111"/>
+    	</ResourceDictionary>
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService
+            Launching="Application_Launching" Closing="Application_Closing"
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>

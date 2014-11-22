@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{520ECCE1-5E2C-4AAD-90EC-21BD06ED576A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UniaraService.Core</RootNamespace>
+    <AssemblyName>UniaraService.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Html\Converters\AbstractConverter.cs" />
+    <Compile Include="Html\Converters\Actions\AulasConverter.cs" />
+    <Compile Include="Html\Converters\Actions\DisciplinasConverter.cs" />
+    <Compile Include="Html\Converters\Actions\FaltasConverter.cs" />
+    <Compile Include="Html\Converters\Actions\PerfilConverter.cs" />
+    <Compile Include="Html\Exceptions\InvalidDocumentException.cs" />
+    <Compile Include="Html\Exceptions\InvalidDocumentParseException.cs" />
+    <Compile Include="Html\Exceptions\NotAuthenticationException.cs" />
+    <Compile Include="Html\Exceptions\UniaraComunicationException.cs" />
+    <Compile Include="Html\Utils\DocumentTrim.cs" />
+    <Compile Include="Html\Validators\DocumentValidator.cs" />
+    <Compile Include="Http\HttpConn.cs" />
+    <Compile Include="Http\Uniara.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniaraService.App\UniaraService.App.csproj">
+      <Project>{c80274a8-3cc6-4477-83ce-da0454d1f021}</Project>
+      <Name>UniaraService.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniaraService.Model\UniaraService.Model.csproj">
+      <Project>{f5bc568d-1530-4079-8838-78aa44bc6de2}</Project>
+      <Name>UniaraService.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

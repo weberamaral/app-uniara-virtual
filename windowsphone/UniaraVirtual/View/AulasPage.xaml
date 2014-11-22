@@ -1,0 +1,129 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="UniaraVirtual.View.AulasPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+	shell:SystemTray.BackgroundColor="#FF222222" shell:SystemTray.ForegroundColor="#FFFEFEFE"
+    shell:SystemTray.IsVisible="True" Foreground="#FFFEFEFE" Background="#FF111111">
+	
+	<!-- SYSTEMTRAY -->
+	<shell:SystemTray.ProgressIndicator>
+		<shell:ProgressIndicator Text="Uniara Virtual" IsVisible="True"/>
+	</shell:SystemTray.ProgressIndicator>
+
+    <!-- TRANSITIONS -->
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.Resources>
+		<DataTemplate x:Key="ListaAulas">
+			<Grid d:LayoutOverrides="Width" Margin="0,0,0,12">
+        		<Grid>
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="124"/>
+        				<ColumnDefinition/>
+        			</Grid.ColumnDefinitions>
+        			<Rectangle Fill="#FF808080" Margin="0,0,-4,0" StrokeThickness="0"/>
+                    <TextBlock Foreground="#FFFEFEFE" x:Name="textBlock2" TextWrapping="Wrap" Text="{Binding Sala, Converter={StaticResource TextCaseConverter}, ConverterParameter=ToUpper}" d:LayoutOverrides="Width" FontSize="{StaticResource PhoneFontSizeNormal}" FontFamily="{StaticResource PhoneFontFamilySemiBold}" Margin="6,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        			<TextBlock Foreground="#FFFEFEFE" x:Name="textBlock1" TextWrapping="Wrap" Text="{Binding Nome, Converter={StaticResource TextCaseConverter}, ConverterParameter=CamelCase}" d:LayoutOverrides="Width" Grid.Column="1" FontSize="{StaticResource PhoneFontSizeMedium}" Margin="12,0,6,0" MaxHeight="66"/>
+        		</Grid>
+        	</Grid>
+		</DataTemplate>
+	</phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="#FF111111">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <ProgressBar x:Name="loading" Foreground="#FFFAA61A" Visibility="Collapsed"/>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="1" Margin="12,72,0,28">
+        	<TextBlock Text="aulas" x:Name="textBlock" Margin="12,0" FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}" FontFamily="{StaticResource PhoneFontFamilyLight}">
+        		<TextBlock.Foreground>
+        			<SolidColorBrush Color="#FFFEFEFE"/>
+        		</TextBlock.Foreground>
+        	</TextBlock>
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Margin="12,12,12,12">
+        	<Grid x:Name="ContentPanel">
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        		</Grid.RowDefinitions>
+        	
+        		<TextBlock x:Name="SegundaText" Style="{StaticResource PhoneTextTitle2Style}" TextWrapping="Wrap" Text="segunda" d:LayoutOverrides="Height" Margin="12,0,12,20" Visibility="Collapsed">
+        			<TextBlock.Foreground>
+        				<SolidColorBrush Color="#FF999999"/>
+        			</TextBlock.Foreground>
+        		</TextBlock>
+                <ListBox Tap="SegundaAulas_Tap" x:Name="SegundaAulas" Grid.Row="1" Margin="12,0,0,12" ItemTemplate="{StaticResource ListaAulas}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Foreground="#FFFEFEFE" />
+                <TextBlock x:Name="TercaText" Style="{StaticResource PhoneTextTitle2Style}" TextWrapping="Wrap" Text="terça" Margin="12,0,12,20" d:LayoutOverrides="Height" Grid.Row="2" Visibility="Collapsed">
+        			<TextBlock.Foreground>
+        				<SolidColorBrush Color="#FF999999"/>
+        			</TextBlock.Foreground>
+        		</TextBlock>
+                <ListBox Tap="TercaAulas_Tap" x:Name="TercaAulas" Grid.Row="3" Margin="12,0,0,12" ItemTemplate="{StaticResource ListaAulas}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Foreground="#FFFEFEFE" />
+                <TextBlock x:Name="QuartaText" Style="{StaticResource PhoneTextTitle2Style}" TextWrapping="Wrap" Text="quarta" d:LayoutOverrides="Height" Margin="12,0,12,20" Grid.Row="4" Visibility="Collapsed">
+        			<TextBlock.Foreground>
+        				<SolidColorBrush Color="#FF999999"/>
+        			</TextBlock.Foreground>
+        		</TextBlock>
+                <ListBox Tap="QuartaAulas_Tap" x:Name="QuartaAulas" Grid.Row="5" Margin="12,0,0,12" ItemTemplate="{StaticResource ListaAulas}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Foreground="#FFFEFEFE" />
+                <TextBlock x:Name="QuintaText" Style="{StaticResource PhoneTextTitle2Style}" TextWrapping="Wrap" Text="quinta" Margin="12,0,12,20" d:LayoutOverrides="Height" Grid.Row="6" Visibility="Collapsed">
+        			<TextBlock.Foreground>
+        				<SolidColorBrush Color="#FF999999"/>
+        			</TextBlock.Foreground>
+        		</TextBlock>
+                <ListBox Tap="QuintaAulas_Tap" x:Name="QuintaAulas" Grid.Row="7" Margin="12,0,0,12" ItemTemplate="{StaticResource ListaAulas}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Foreground="#FFFEFEFE" />
+                <TextBlock x:Name="SextaText" Style="{StaticResource PhoneTextTitle2Style}" TextWrapping="Wrap" Text="sexta" d:LayoutOverrides="Height" Margin="12,0,12,20" Grid.Row="8" Visibility="Collapsed">
+        			<TextBlock.Foreground>
+        				<SolidColorBrush Color="#FF999999"/>
+        			</TextBlock.Foreground>
+        		</TextBlock>
+                <ListBox Tap="SextaAulas_Tap" x:Name="SextaAulas" Grid.Row="9" Margin="12,0,0,12" ItemTemplate="{StaticResource ListaAulas}" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Foreground="#FFFEFEFE" />
+
+        	</Grid>
+        </ScrollViewer>
+    </Grid>
+
+</phone:PhoneApplicationPage>
